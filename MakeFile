@@ -1,0 +1,56 @@
+#-----------------------------------------------------------------------------
+#compiler name
+#---------------
+CXX := gcc
+#-----------------------------------------------------------------------------
+#executable file name 
+#----------------------------
+EXE_NAME := output.exe
+#-----------------------------------------------------------------------------
+#source files to be compiled 
+#----------------------------
+SOURCE_FILLES := main.c
+#Add more source files to the next line "SOURCE_FILLES" to be compiled
+SOURCE_FILLES += add.c 
+SOURCE_FILLES += sub.c
+#-----------------------------------------------------------------------------
+#FLAGS
+#---------------
+# -O is for optimezed level then we write 0,1,2,3,s
+# (0 to make the program execution time very small "fastest"
+# and 3 to make the program execution time very big "slowest") 
+# (s to optimize the size make (to reduce the size)
+CXXFLAGS := -Os
+#warrning flags
+# w      --------- to ignore any warning 
+# Wall   --------- to display any warning
+# Werror --------- treat any warning like an error 
+CXXFLAGS += -Wall
+#-----------------------------------------------------------------------------
+#command: dependency 
+#	cmd_1
+#	cmd_2
+#	cmd_3
+#-----------------------------------------------------------------------------
+build: 
+	@echo "-----------BUILD----------------"
+	@gcc $(CXXFLAGS) $(SOURCE_FILLES) -o $(EXE_NAME)
+
+run: 
+	@echo "-----------RUN----------------"
+	@$(EXE_NAME)
+
+
+All: clean build  size  run 
+	
+
+clean:
+	@rm $(EXE_NAME)
+
+
+size: 
+	@size $(EXE_NAME)
+
+
+	
+
